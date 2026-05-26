@@ -1,9 +1,8 @@
-version: '3.8'
 services:
   mast3r-demo:
     build:
-      context: ./files
-      dockerfile: cuda.Dockerfile 
+      context: ..
+      dockerfile: docker/files/cuda.Dockerfile
     ports:
       - "7860:7860"
     environment:

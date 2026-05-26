@@ -11,11 +11,13 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git clone --recursive https://github.com/naver/mast3r /mast3r
+COPY dust3r /mast3r/dust3r
 WORKDIR /mast3r/dust3r
 RUN pip install -r requirements.txt
 RUN pip install -r requirements_optional.txt
 RUN pip install opencv-python==4.8.0.74
+
+COPY . /mast3r
 
 WORKDIR /mast3r/dust3r/croco/models/curope/
 RUN python setup.py build_ext --inplace
@@ -23,7 +25,7 @@ RUN python setup.py build_ext --inplace
 WORKDIR /mast3r
 RUN pip install -r requirements.txt
 
-COPY entrypoint.sh /entrypoint.sh
+COPY docker/files/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
