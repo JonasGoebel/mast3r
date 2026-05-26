@@ -313,10 +313,10 @@ def main_demo(tmpdirname, model, retrieval_model, device, image_size, server_nam
                                                           interactive=True)
                         with gradio.Column(visible=False) as graph_opt:
                             winsize = gradio.Slider(label="Scene Graph: Window Size", value=1,
-                                                    minimum=1, maximum=1, step=1)
+                                                    minimum=0, maximum=1, step=1)
                             win_cyclic = gradio.Checkbox(value=False, label="Cyclic sequence")
                             refid = gradio.Slider(label="Scene Graph: Id", value=0,
-                                                  minimum=0, maximum=0, step=1, visible=False)
+                                                  minimum=0, maximum=1, step=1, visible=False)
 
             run_btn = gradio.Button("Run")
 
